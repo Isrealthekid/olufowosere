@@ -1,4 +1,6 @@
 import { renderMessage, formatDate } from './chat-render.js';
+import { initializeAdminSettings, loadExtendedAdmin, clearExtendedAdmin, hasSettingsChanges } from './admin-settings.js';
+initializeAdminSettings();
 const $ = selector => document.querySelector(selector);
 let data = null;
 let dirty = false;
@@ -70,14 +72,15 @@ async function showEditor() {
   if (!data) data = await api('/api/chats');
   $('#login-section').hidden = true; $('#editor').hidden = false; $('#logout').hidden = false;
   $('#password').value = ''; render(); status(dirty ? 'Signed in. Your unsaved changes are ready to save.' : 'Ready to edit.');
+  await loadExtendedAdmin();
 }
 $('#login-form').addEventListener('submit', async event => {
   event.preventDefault(); const submit = event.currentTarget.querySelector('button'); submit.disabled = true;
   try { await api('/api/login', 'POST', { password: $('#password').value }); await showEditor(); } catch (error) { status(error.message, true); } finally { submit.disabled = false; }
 });
 $('#logout').addEventListener('click', async () => {
-  if (dirty && !confirm('Sign out and discard unsaved changes?')) return;
-  try { await api('/api/logout', 'POST', {}); dirty = false; data = null; $('#editor').hidden = true; $('#logout').hidden = true; $('#login-section').hidden = false; $('#updates').replaceChildren(); status('Signed out.'); } catch (error) { status(error.message, true); }
+  if ((dirty || hasSettingsChanges()) && !confirm('Sign out and discard unsaved changes?')) return;
+  try { await api('/api/logout', 'POST', {}); dirty = false; data = null; clearExtendedAdmin(); $('#editor').hidden = true; $('#logout').hidden = true; $('#login-section').hidden = false; $('#updates').replaceChildren(); status('Signed out.'); } catch (error) { status(error.message, true); }
 });
 $('#add-update').addEventListener('click', () => {
   if (data.groups.length >= 100) return status('You can have up to 100 updates.', true);
@@ -87,7 +90,7 @@ $('#add-update').addEventListener('click', () => {
 });
 $('#save').addEventListener('click', async () => {
   if (busy) return;
-  const invalid = [...$('#editor').querySelectorAll('input,textarea')].find(input => !input.checkValidity());
+  const invalid = [...$('#updates').querySelectorAll('input,textarea')].find(input => !input.checkValidity());
   if (invalid) { invalid.reportValidity(); return; }
   if (data.groups.some(group => group.messages.some(message => !message.text.trim()))) return status('Write something in each message before saving.', true);
   busy = true;

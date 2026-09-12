@@ -1,0 +1,5 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: same-origin
+  Content-Security-Policy: default-src 'self'; img-src 'self' data: https://*.googleusercontent.com https://lh3.google.com; script-src 'self'; style-src 'self'; connect-src 'self'; frame-src https://maps.google.com https://www.google.com https://drive.google.com; base-uri 'none'; frame-ancestors 'none'; form-action 'self'
+

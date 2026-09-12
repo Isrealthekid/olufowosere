@@ -9,6 +9,24 @@
     </section>
     <p id="status" role="status" aria-live="polite"></p>
     <section id="editor" hidden>
+      <details class="admin-settings-panel" open>
+        <summary>Profile &amp; contact settings</summary>
+        <form id="profile-settings-form">
+          <label for="setting-driveFolder">Google Drive design folder</label><input id="setting-driveFolder" type="url" placeholder="https://drive.google.com/drive/folders/…">
+          <p class="editing-hint">Set the folder to “Anyone with the link” and Viewer. Photos lists images from this folder. Configure GOOGLE_DRIVE_API_KEY on the server with Google Drive API enabled. Add only work you want visitors to see.</p>
+          <label for="setting-githubUrl">GitHub URL</label><input id="setting-githubUrl" type="url" placeholder="https://github.com/yourname">
+          <h3>Websites I worked on</h3><div id="website-settings"></div><button id="add-website" type="button">+ Add website</button>
+          <label for="setting-cvTitle">CV title</label><input id="setting-cvTitle" maxlength="150" required>
+          <label for="setting-cvUrl">CV link</label><input id="setting-cvUrl" type="url" placeholder="Public Google Drive or PDF link">
+          <label for="setting-contactPrompt">Final message</label><textarea id="setting-contactPrompt" maxlength="1000" required></textarea>
+          <p class="editing-hint">Its timestamp is the visitor’s local date and time when they opened the page.</p>
+          <label for="setting-contactPlaceholder">Chat box placeholder</label><input id="setting-contactPlaceholder" maxlength="100" required>
+          <label class="check-label"><input id="setting-contactEnabled" type="checkbox"> Accept contact replies</label>
+          <p class="editing-hint">Replies are saved privately in the inbox below. They are not automatically emailed.</p>
+          <button type="submit" class="primary">Save profile settings</button><p id="settings-status" role="status" aria-live="polite"></p>
+        </form>
+      </details>
+      <details class="admin-settings-panel"><summary>Contact inbox</summary><button id="refresh-inbox" type="button">Refresh replies</button><div id="contact-inbox"></div></details>
       <div class="editor-toolbar"><p>Updates appear in date order. Changes go live when you save.</p><div><button id="add-update">+ Add update</button><button class="primary" id="save">Save changes</button></div></div>
       <p class="editing-hint">Use [link text](https://example.com) to add a link. Leave the reaction empty to remove it.</p>
       <div id="updates"></div>

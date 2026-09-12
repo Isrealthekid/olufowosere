@@ -1,6 +1,13 @@
 import { renderTimeline } from './chat-render.js';
 import { initializeProfile } from './profile.js';
+import { getSettings, loadSettings } from './site-settings.js';
+import { updateProfileContent } from './profile-content.js';
+import { initializeContactChat, renderContactTail } from './contact-chat.js';
 initializeProfile();
+updateProfileContent(getSettings());
+initializeContactChat();
+window.addEventListener('portfolio-settings',event=>{updateProfileContent(event.detail);if(document.querySelector('.timeline .message-group'))renderContactTail();});
+loadSettings();
 const portfolio = document.querySelector('.portfolio');
 const toggle = document.querySelector('.contact-toggle');
 const panel = document.querySelector('.contact-panel');
@@ -28,6 +35,7 @@ async function loadChats() {
     if (data.revision === revision && !showingSnapshot) return;
     const scrollTop = timeline.scrollTop;
     renderTimeline(timeline, data.groups);
+    renderContactTail();
     timeline.scrollTop = scrollTop;
     revision = data.revision;
     showingSnapshot = false;
@@ -36,6 +44,7 @@ async function loadChats() {
     try {
       const { default: published } = await import('./published-chats.js');
       renderTimeline(timeline, published.groups);
+      renderContactTail();
       revision = published.revision;
       showingSnapshot = true;
       return;
@@ -49,7 +58,7 @@ async function loadChats() {
   }
 }
 loadChats();
-window.addEventListener('focus', loadChats);
+window.addEventListener('focus', () => { loadChats(); loadSettings(); });
 setInterval(() => { if (!document.hidden) loadChats(); }, 15000);
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' && !panel.hidden) setPanel(false);

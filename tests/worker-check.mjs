@@ -1,0 +1,16 @@
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+const base='http://localhost:8787';let cookie='';
+const call=(path,method='GET',data)=>fetch(base+path,{method,headers:{Origin:base,'Content-Type':'application/json',Cookie:cookie},body:data===undefined?undefined:JSON.stringify(data)});
+assert.equal((await call('/admins')).status,200);
+assert.equal((await(await call('/api/chats')).json()).groups.length,8);
+assert.equal((await call('/api/contacts')).status,401);
+const password=(await readFile(new URL('../.env',import.meta.url),'utf8')).match(/^ADMIN_PASSWORD=(.*)$/m)[1].trim();
+const login=await call('/api/login','POST',{password});assert.equal(login.status,200);cookie=login.headers.get('set-cookie').split(';')[0];
+const settings=await(await call('/api/settings')).json();
+const result=await call('/api/settings','PUT',settings);assert.equal(result.status,200);const saved=await result.json();assert.equal(saved.revision,settings.revision+1);
+const id=crypto.randomUUID();const contact=await call('/api/contacts','POST',{id,contact:'worker-qa@example.com',openedAt:new Date().toISOString(),website:''});assert.equal(contact.status,201);
+assert.ok((await(await call('/api/contacts')).json()).items.some(item=>item.id===id));
+assert.equal((await call('/api/contacts/'+id,'DELETE',{})).status,200);
+await call('/api/logout','POST',{});
+console.log('Worker runtime passed: asset routing, login, SQLite settings persistence, contact replies, inbox authorization, and deletion.');

@@ -20,7 +20,12 @@
       </header>
       <div class="timeline" tabindex="0" aria-label="Career timeline"><p class="timeline-status" role="status">Loading messages…</p></div>
       <footer class="composer-dock">
-        <div class="composer"><input type="email" name="email" aria-label="Email address" placeholder="Message" maxlength="254" autocomplete="email"></div>
+        <form class="composer" id="contact-form">
+          <input id="contact-input" type="text" name="contact" aria-label="Your email, phone number, or social handle" placeholder="Send a message" maxlength="1000" required minlength="3" autocomplete="off">
+          <input class="contact-trap" name="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button id="contact-send" type="submit" aria-label="Send contact details"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </form>
+        <p id="contact-status" role="status" aria-live="polite"></p>
       </footer>
     </section>
     <aside class="contact-panel modern-profile" id="contact-panel" aria-label="Profile" hidden></aside>
