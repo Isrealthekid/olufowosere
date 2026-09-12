@@ -1,0 +1,171 @@
+{
+  "revision": 3,
+  "groups": [
+    {
+      "id": "era",
+      "date": "2023-05-09",
+      "messages": [
+        {
+          "text": "hey, small life update. i started a web developer internship at [engineering resource academy](https://era.com.ng)",
+          "reaction": "",
+          "animation": "none"
+        },
+        {
+          "text": "i was still figuring things out, but building for the web felt like a pretty good place to start",
+          "reaction": "",
+          "animation": "none"
+        }
+      ],
+      "time": "09:49"
+    },
+    {
+      "id": "bsc",
+      "date": "2024-07-15",
+      "messages": [
+        {
+          "text": "a slightly bigger update this time… i got my BSc from Caleb University!",
+          "reaction": "🎓",
+          "animation": "none"
+        },
+        {
+          "text": "it felt strange to be done. one chapter had closed, but i still had a lot of tabs open",
+          "reaction": "",
+          "animation": "none"
+        }
+      ],
+      "time": "20:53"
+    },
+    {
+      "id": "teacch-design",
+      "date": "2024-11-02",
+      "messages": [
+        {
+          "text": "i joined [teacch](https://teacch.co) as lead graphics designer",
+          "reaction": "🎨",
+          "animation": "none"
+        },
+        {
+          "text": "i spent a lot of time thinking about layouts, colours, and why moving something two pixels made such a difference",
+          "reaction": "",
+          "animation": "none"
+        },
+        {
+          "text": "i kept calling things almost done, then went back and adjusted the spacing. classic me",
+          "reaction": "",
+          "animation": "none"
+        }
+      ],
+      "time": "06:38"
+    },
+    {
+      "id": "teacch-frontend",
+      "date": "2025-02",
+      "messages": [
+        {
+          "text": "remember teacch? i contributed to a frontend development project there too",
+          "reaction": "💻",
+          "animation": "none"
+        },
+        {
+          "text": "so, code and design. apparently i didn't have to choose just one",
+          "reaction": "",
+          "animation": "none"
+        },
+        {
+          "text": "i loved that part where something finally looked right, and then i got to make it work",
+          "reaction": "",
+          "animation": "none"
+        }
+      ],
+      "time": "13:54"
+    },
+    {
+      "id": "nysc",
+      "date": "2025-04-25",
+      "messages": [
+        {
+          "text": "another little plot twist, i started my NYSC service year in lagos and served as lead graphics designer for Team 25A1",
+          "reaction": "🇳🇬",
+          "animation": "none"
+        },
+        {
+          "text": "it was a different kind of team, but i brought the same love for making things look right",
+          "reaction": "",
+          "animation": "none"
+        },
+        {
+          "text": "the design work really did follow me everywhere i went",
+          "reaction": "",
+          "animation": "none"
+        }
+      ],
+      "time": "11:54"
+    },
+    {
+      "id": "papyrus",
+      "date": "2025-05-20",
+      "messages": [
+        {
+          "text": "hey stranger. i started a frontend engineering role at Papyrus Digital Solutions in lagos, nigeria",
+          "reaction": "",
+          "animation": "none"
+        },
+        {
+          "text": "i worked on Field Max Pro, Genith, and a POS system for retail",
+          "reaction": "",
+          "animation": "none"
+        },
+        {
+          "text": "that work made me think about every little click. someone had a whole day to get through on the other side of the screen",
+          "reaction": "",
+          "animation": "none"
+        }
+      ],
+      "time": "16:02"
+    },
+    {
+      "id": "eib",
+      "date": "2026-04-05",
+      "messages": [
+        {
+          "text": "big update. i joined Eib Group as a Software Engineer",
+          "reaction": "🥳",
+          "animation": "none"
+        },
+        {
+          "text": "thinking back to that first internship made this one feel a little surreal",
+          "reaction": "",
+          "animation": "none"
+        },
+        {
+          "text": "i was still curious about how things worked. the questions had just gotten bigger",
+          "reaction": "",
+          "animation": "none"
+        }
+      ],
+      "time": "11:26"
+    },
+    {
+      "id": "greatiby",
+      "date": "2026-08-05",
+      "messages": [
+        {
+          "text": "oh, and one more thing. i did graphics design at [Greatiby](https://greatiby.com)",
+          "reaction": "✨",
+          "animation": "none"
+        },
+        {
+          "text": "the design side of my brain stayed busy too. some days i worked on layouts, other days it was lines of code",
+          "reaction": "",
+          "animation": "none"
+        },
+        {
+          "text": "anyway, that was quite a chapter. a lot had happened since our last proper catch-up",
+          "reaction": "",
+          "animation": "none"
+        }
+      ],
+      "time": "02:16"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Isreal · Edit messages</title><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/admin.css"><script type="module" src="/admin.js"></script></head>
+<body class="admin-page">
+  <main class="admin-shell">
+    <header class="admin-header"><div><a href="/">← Portfolio</a><h1>Edit messages</h1><p>A little life update, whenever you have one.</p></div><button id="logout" hidden>Sign out</button></header>
+    <section id="login-section" class="login-card">
+      <h2>Just you here.</h2><p>Enter your password to edit the timeline.</p>
+      <form id="login-form"><label for="password">Password</label><input id="password" name="password" type="password" autocomplete="current-password" required><button class="primary" type="submit">Sign in</button></form>
+    </section>
+    <p id="status" role="status" aria-live="polite"></p>
+    <section id="editor" hidden>
+      <div class="editor-toolbar"><p>Updates appear in date order. Changes go live when you save.</p><div><button id="add-update">+ Add update</button><button class="primary" id="save">Save changes</button></div></div>
+      <p class="editing-hint">Use [link text](https://example.com) to add a link. Leave the reaction empty to remove it.</p>
+      <div id="updates"></div>
+    </section>
+  </main>
+</body></html>
+
