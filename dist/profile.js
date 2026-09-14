@@ -15,7 +15,7 @@ export function initializeProfile() {
     <div class="profile-scroll">
       <header class="profile-hero">
         <button class="close-panel profile-back glass-button" aria-label="Back to messages">${icon('back')}</button>
-        <a class="profile-edit glass-button" href="/admins" aria-label="Edit portfolio messages in admin">Edit</a>
+        <a class="profile-edit glass-button" href="/not-allowed.html" aria-label="Edit profile">Edit</a>
         <img class="profile-avatar" src="/assets/profile.jpg" alt="Isreal’s profile picture" width="100" height="100">
         <h1>Isreal Oluwole</h1>
         <div class="profile-actions">
@@ -133,4 +133,3 @@ export function initializeProfile() {
     const reader=new FileReader();reader.onload=()=>{photo=reader.result;setBackground('photo');try{localStorage.setItem('portfolio-background-photo',photo);status.textContent='Background saved for this browser.';}catch{status.textContent='Background applied for this visit.';}};reader.onerror=()=>status.textContent='Could not read that image. Try another one.';reader.readAsDataURL(file);
   });
 }
-

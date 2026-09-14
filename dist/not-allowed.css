@@ -1,0 +1,5 @@
+.restricted-page{margin:0;background:#fff;min-height:100dvh}
+.restricted-page main{min-height:100dvh;display:grid;place-items:center;padding:100px 24px}
+.restricted-page p{margin:0;color:#b6b6bc;font-size:16px;line-height:1.5;text-align:center;font-weight:400}
+.restricted-back{position:fixed;left:20px;top:24px;width:52px;height:52px;padding:14px;color:#111}
+@media(max-width:760px){.restricted-back{top:26px}}

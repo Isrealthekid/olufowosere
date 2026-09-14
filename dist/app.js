@@ -23,6 +23,8 @@ function setPanel(open) {
 }
 toggle.addEventListener('click', () => setPanel(panel.hidden));
 closeButton.addEventListener('click', () => setPanel(false));
+if (location.hash === '#profile') setPanel(true);
+window.addEventListener('hashchange', () => { if (location.hash === '#profile') setPanel(true); });
 let revision;
 let showingSnapshot = false;
 async function loadChats() {
