@@ -12,8 +12,32 @@ const portfolio = document.querySelector('.portfolio');
 const toggle = document.querySelector('.contact-toggle');
 const panel = document.querySelector('.contact-panel');
 const closeButton = document.querySelector('.close-panel');
+const worksPrompt = document.querySelector('.works-prompt');
+let promptTimeout;
+
+function dismissWorksPrompt() {
+  clearTimeout(promptTimeout);
+  if (worksPrompt.open) worksPrompt.close();
+}
+worksPrompt.querySelector('.works-yes').addEventListener('click', () => {
+  dismissWorksPrompt();
+  location.hash = 'profile';
+  setPanel(true);
+});
+worksPrompt.querySelector('.works-no').addEventListener('click', dismissWorksPrompt);
+worksPrompt.addEventListener('close', () => clearTimeout(promptTimeout));
+function scheduleWorksPrompt() {
+  setTimeout(() => {
+    if (!panel.hidden || location.hash === '#profile') return;
+    worksPrompt.showModal();
+    promptTimeout = setTimeout(dismissWorksPrompt, 4000);
+  }, 2000);
+}
+if (document.readyState === 'complete') scheduleWorksPrompt();
+else window.addEventListener('load', scheduleWorksPrompt, { once: true });
 
 function setPanel(open) {
+  if (open) dismissWorksPrompt();
   panel.hidden = !open;
   portfolio.classList.toggle('panel-open', open);
   toggle.setAttribute('aria-expanded', String(open));
@@ -63,6 +87,6 @@ loadChats();
 window.addEventListener('focus', () => { loadChats(); loadSettings(); });
 setInterval(() => { if (!document.hidden) loadChats(); }, 15000);
 document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape' && !panel.hidden) setPanel(false);
+  if (event.key === 'Escape' && !worksPrompt.open && !panel.hidden) setPanel(false);
 });
 

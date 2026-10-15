@@ -8,7 +8,7 @@
   },
   "assets": {
     "binding": "ASSETS",
-    "run_worker_first": ["/api/*", "/admins", "/admins/"],
+    "run_worker_first": ["/api/*", "/admins", "/admins/", "/profile", "/profile/"],
     "directory": "./dist",
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "none"

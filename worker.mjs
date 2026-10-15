@@ -17,6 +17,7 @@ export class PortfolioData extends DurableObject {
 export default {
   async fetch(request,env){
     const url=new URL(request.url);
+    if(['/profile','/profile/'].includes(url.pathname))return Response.redirect(new URL(`/${url.search}#profile`,url),302);
     if(url.pathname.startsWith('/api/'))return env.PORTFOLIO_DATA.getByName('portfolio').fetch(request);
     return env.ASSETS.fetch(request);
   }

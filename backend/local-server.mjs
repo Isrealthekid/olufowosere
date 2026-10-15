@@ -28,6 +28,7 @@ const server=http.createServer(async(req,res)=>{
       const response=await run;res.writeHead(response.status,Object.fromEntries(response.headers));res.end(Buffer.from(await response.arrayBuffer()));return;
     }
     if(!['GET','HEAD'].includes(req.method)){res.writeHead(405);res.end();return;}
+    if(['/profile','/profile/'].includes(url.pathname)){res.writeHead(302,{'Location':`/${url.search}#profile`});res.end();return;}
     const requested=url.pathname==='/'?'index.html':['/admins','/admins/'].includes(url.pathname)?'admins.html':decodeURIComponent(url.pathname).slice(1);
     const file=resolve(publicDir,requested);
     const types={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.jpg':'image/jpeg','.png':'image/png','.svg':'image/svg+xml'};

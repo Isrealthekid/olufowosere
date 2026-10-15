@@ -1,0 +1,63 @@
+GOOGLE DRIVE IMAGE GALLERY SETUP
+
+1. PREPARE YOUR FOLDER
+Upload your graphic design images directly into this Google Drive folder:
+https://drive.google.com/drive/folders/1jhsN_FeaxQQDOFqveCu1F-YoFfOCQuX9
+
+Use image files such as JPG, PNG, or WebP. Images inside subfolders are not included.
+Open Share > General access > Anyone with the link > Viewer.
+Make sure the image files also allow public viewing.
+
+2. CREATE A GOOGLE API KEY
+Open https://console.cloud.google.com/
+Select or create a project.
+Go to APIs & Services > Library and enable Google Drive API.
+Go to APIs & Services > Credentials > Create credentials > API key.
+Under API restrictions, restrict the key to Google Drive API.
+Do not use a website/referrer restriction: this app calls Google from its server.
+Keep the key private. Do not put it in GitHub, HTML, or public admin settings.
+
+3. ADD THE KEY TO CLOUDFLARE
+Open Cloudflare > Workers & Pages > olufowosere > Settings.
+In the Worker's runtime Variables and Secrets section, add:
+
+Type: Secret
+Name: GOOGLE_DRIVE_API_KEY
+Value: your Google API key
+
+Use the exact name above. Do not add it only under Builds.
+Save and deploy the change so the running Worker receives the key.
+The gallery code must also be deployed from the connected GitHub repository.
+
+4. CONNECT THE FOLDER IN ADMIN
+Open https://olufowosere.com/admins and sign in.
+Open Profile & contact settings.
+Paste the folder link into Google Drive design folder.
+Click Save profile settings.
+
+5. LOCAL SETUP (OPTIONAL)
+In the project's .env file, add:
+GOOGLE_DRIVE_API_KEY=your_actual_key
+
+Restart the local server with npm start.
+Open http://localhost:3000/admins and save the folder link there too.
+Local and production admin settings are stored separately.
+
+6. CHECK THE GALLERY
+Open the portfolio, click the profile, and select Photos.
+Images appear in a grid. Clicking an image opens it inside the portfolio.
+The image list is cached for five minutes. After adding new images, wait
+five minutes and refresh the page.
+
+IF IMAGES DO NOT LOAD
+- "The design gallery is not connected yet" means the running server cannot
+  see GOOGLE_DRIVE_API_KEY. Check the exact name, runtime settings, and deployment.
+- Check that Google Drive API is enabled in the project that owns the key.
+- Check API key restrictions and Google API quotas.
+- Open the shared folder in a signed-out browser to confirm public access.
+- Confirm the images are directly inside the configured folder.
+- Check https://olufowosere.com/api/photos for the gallery response.
+- Local API check: http://localhost:3000/api/photos
+
+If admin says "Admin password has not been configured", add ADMIN_PASSWORD
+as a separate Cloudflare runtime secret and deploy that change too.
